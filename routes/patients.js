@@ -28,8 +28,8 @@ router.put("/:id", async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   const { body } = req;
-  const patient = await patient.findByIdAndUpdate(
-    req.param.id,
+  const patient = await Patient.findByIdAndUpdate(
+    req.params.id,
     {
       name: body.name,
       dateOfYear: body.dateOfYear,
@@ -45,14 +45,14 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const patient = await patient.findByIdAndRemove(req.param.id);
+  const patient = await Patient.findByIdAndRemove(req.params.id);
   if (!patient)
     return res.status(404).send("The patient with the given ID not found");
   res.send(patient);
 });
 
 router.get("/:id", async (req, res) => {
-  const patient = await Patient.findById(req.param.id);
+  const patient = await Patient.findById(req.params.id);
   if (!patient)
     return res.status(404).send("The patient with the given ID not found");
   res.send(patient);

@@ -1,0 +1,56 @@
+
+
+### REST Client plug-in must be installed 
+### developed by Huachao Mao
+
+### ------------------------------------------------------------------------------------
+
+### define service setting 
+@DataEndPoint = http://localhost:3099/api/patients
+
+
+### ------------------------------------------------------------------------------------
+### get all data 
+GET {{DataEndPoint}}
+Content-Type: application/json
+
+
+### ------------------------------------------------------------------------------------
+### save
+POST {{DataEndPoint}}
+Content-Type: application/json
+
+{
+    "name": "U Ba",
+    "dateOfYear": "1978",
+    "address": "325, xx Pazundaung",
+    "mobileNo": "09 3456789, 09 98765678",
+    "date": "2020/06/01"
+  }
+
+### ------------------------------------------------------------------------------------
+### update
+PUT {{DataEndPoint}}/5ed4c5f5d43ab73934be2b4d
+Content-Type: application/json
+
+{
+    "name": "U Ba Phyu 2",
+    "dateOfYear": "1966",
+    "address": "325,kyar pwint, Pazundaung",
+    "mobileNo": "09 3456789",
+    "date": "2020/05/29"
+  }
+
+### ------------------------------------------------------------------------------------
+### delete
+DELETE  {{DataEndPoint}}/5ed4c5f5d43ab73934be2b4d
+Content-Type: application/json
+
+
+### ------------------------------------------------------------------------------------
+### get by id 
+GET {{DataEndPoint}}/5ed4c66d9daab60bcc7a9bb4
+Content-Type: application/json
+
+
+### ------------------------------------------------------------------------------------

@@ -15,7 +15,9 @@ const Patient = mongoose.model(
 validate = (customer) => {
   const schema = {
     name: Joi.string().min(3).max(50).required(),
-    dateOfYear: Joi.number(),
+    dateOfYear: Joi.number().required(),
+    address: Joi.string(),
+    mobileNo: Joi.string(),
     date: Joi.date(),
   };
   return Joi.validate(customer, schema);
