@@ -3,7 +3,8 @@ const router = express.Router();
 const {Patient, validate} = require('../models/patient');
 
 router.get("/", async (req, res) => {
-  const patients = await Patient.find().sort("name");
+  let patients = await Patient.find().sort("name");  
+  patients.map(x=> x = addAgeColumn(x));
   res.send(patients);
 });
 
@@ -47,16 +48,23 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const patient = await Patient.findByIdAndRemove(req.params.id);
   if (!patient)
-    return res.status(404).send("The patient with the given ID not found");
+    return res.status(404).send("The patient with the given ID not found");    
   res.send(patient);
 });
 
 router.get("/:id", async (req, res) => {
-  const patient = await Patient.findById(req.params.id);
+  let patient = await Patient.findById(req.params.id);
   if (!patient)
     return res.status(404).send("The patient with the given ID not found");
+
+  patient = addAgeColumn(patient);
   res.send(patient);
 });
 
+
+addAgeColumn = (patient) => {  
+  patient._doc.age = new Date().getFullYear() - patient._doc.dateOfYear;
+  return patient;
+}
 
 module.exports = router;

@@ -21,11 +21,11 @@ POST {{DataEndPoint}}
 Content-Type: application/json
 
 {
-    "name": "U Ba",
-    "dateOfYear": "1978",
-    "address": "325, xx Pazundaung",
-    "mobileNo": "09 3456789, 09 98765678",
-    "date": "2020/06/01"
+    "name": "Ma Mya",
+    "dateOfYear": "1997",
+    "address": "115, xx Pazundaung Pazundaung Pazundaung",
+    "mobileNo": "09 3456789",
+    "date": "2020/06/02"
   }
 
 ### ------------------------------------------------------------------------------------
