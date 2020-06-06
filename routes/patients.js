@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {Patient, validate} = require('../models/patient');
+const {calculateAge} = require('../util/calculateAge');
 
 router.get("/", async (req, res) => {
   let patients = await Patient.find().sort("name");  
@@ -13,14 +14,14 @@ router.post("/", async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   const { body } = req;
-  let patient = new Patient({
+  const patient = new Patient({
     name: body.name,
     dateOfYear: body.dateOfYear,
     address: body.address,
     mobileNo: body.mobileNo,
     date: body.date,
   });
-  patient = await patient.save();
+  await patient.save();
   res.send(patient);
 });
 
@@ -62,8 +63,8 @@ router.get("/:id", async (req, res) => {
 });
 
 
-addAgeColumn = (patient) => {  
-  patient._doc.age = new Date().getFullYear() - patient._doc.dateOfYear;
+addAgeColumn = (patient) => {    
+  patient._doc.age = calculateAge(patient._doc.dateOfYear);
   return patient;
 }
 

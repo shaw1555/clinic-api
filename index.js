@@ -1,5 +1,8 @@
+const Joi = require("joi");
+Joi.objectId = require('joi-objectid')(Joi);
 const mongoose = require("mongoose");
 const patients = require('./routes/patients');
+const records = require('./routes/records');
 var cors = require('cors')
 const express = require('express');
 const app = express();
@@ -18,6 +21,7 @@ mongoose
 app.use(express.json());
 app.use(cors());
 app.use('/api/patients', patients);
+app.use('/api/records', records);
 
 
 

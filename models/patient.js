@@ -1,16 +1,13 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 
-const Patient = mongoose.model(
-  "Patient",
-  new mongoose.Schema({
-    name: { type: String, required: true },
-    dateOfYear: { type: Number, required: true },
-    address: String,
-    mobileNo: String,
-    date: { type: Date, required: true },
-  })
-);
+const Patient = mongoose.model("Patient", new mongoose.Schema({
+  name: { type: String, required: true },
+  dateOfYear: { type: Number, required: true },
+  address: String,
+  mobileNo: String,
+  date: { type: Date, required: true, default: Date.now },
+}));
 
 validate = (customer) => {
   const schema = {
@@ -22,7 +19,6 @@ validate = (customer) => {
   };
   return Joi.validate(customer, schema);
 };
-
 
 exports.Patient = Patient;
 exports.validate = validate;

@@ -1,12 +1,11 @@
 
-
 ### REST Client plug-in must be installed 
 ### developed by Huachao Mao
 
 ### ------------------------------------------------------------------------------------
 
 ### define service setting 
-@DataEndPoint = http://localhost:3099/api/patients
+@DataEndPoint = http://localhost:3099/api/records
 
 
 ### ------------------------------------------------------------------------------------
@@ -16,40 +15,50 @@ Content-Type: application/json
 
 
 ### ------------------------------------------------------------------------------------
+### get by patientId // return array for all records by patientId //
+GET {{DataEndPoint}}/patientId/5ed5f3a02a2f2046b0ed3a3a
+Content-Type: application/json
+
+
+### ------------------------------------------------------------------------------------
 ### save
 POST {{DataEndPoint}}
 Content-Type: application/json
 
 {
-    "name": "Ma Mya",
-    "dateOfYear": "1997",
-    "address": "115, xx Pazundaung Pazundaung Pazundaung",
-    "mobileNo": "09 3456789",
-    "date": "2020/06/02"
+    "date": "2020/06/02", 
+    "fee": 7000,
+    "description": "ill ",
+    "medicine": "c-vid barmiton",  
+    "nextAppointmentDate": null,
+    "patientId": "5ed5f3a12a2f2046b0ed3a40"    
   }
 
+  
 ### ------------------------------------------------------------------------------------
 ### update
-PUT {{DataEndPoint}}/5ed71b8daaf3723bfc4b231a
+PUT {{DataEndPoint}}/5edb495f675c310e0c056ebc
 Content-Type: application/json
 
 {
-    "name": "U Ba Phyu 2",
-    "dateOfYear": "1966",
-    "address": "325,kyar pwint, Pazundaung",
-    "mobileNo": "09 3456789",
-    "date": "2020/05/29"
+    "date": "2020/06/04", 
+    "fee": 7000,
+    "description": "ill ",
+    "medicine": "c-vid barmiton",  
+    "nextAppointmentDate": "2020/06/20",
+    "patientId": "5ed5f3a02a2f2046b0ed3a3a"    
   }
+
 
 ### ------------------------------------------------------------------------------------
 ### delete
-DELETE  {{DataEndPoint}}/5ed71b8daaf3723bfc4b231a
+DELETE  {{DataEndPoint}}/5edb495f675c310e0c056ebc
 Content-Type: application/json
 
 
 ### ------------------------------------------------------------------------------------
 ### get by id 
-GET {{DataEndPoint}}/5ed4c66d9daab60bcc7a9bb4
+GET {{DataEndPoint}}/5edb4472fbc65c33f0a4f040
 Content-Type: application/json
 
 
