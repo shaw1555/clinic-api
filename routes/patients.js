@@ -1,17 +1,24 @@
 const express = require("express");
 const router = express.Router();
-const {Patient, validate} = require('../models/patient');
-const {calculateAge} = require('../util/calculateAge');
+const { Patient, validate } = require("../models/patient");
+const { calculateAge, calculateDateOfYear } = require("../util/calculateAge");
 
 router.get("/", async (req, res) => {
-  let patients = await Patient.find().sort("name");  
-  patients.map(x=> x = addAgeColumn(x));
+  let patients = await Patient.find().sort("-date");
+  patients.map((x) => x = addAgeColumn(x));
   res.send(patients);
 });
 
 router.post("/", async (req, res) => {
-  const { error } = validate(req.body);
+  const { error } = validate({
+    name: req.body.name,
+    age: req.body.age,
+    address: req.body.address,
+    mobileNo: req.body.mobileNo,
+  });
   if (error) return res.status(400).send(error.details[0].message);
+
+  req.body.dateOfYear = calculateDateOfYear(req.body.age);
 
   const { body } = req;
   const patient = new Patient({
@@ -22,12 +29,16 @@ router.post("/", async (req, res) => {
     date: body.date,
   });
   await patient.save();
-  res.send(patient);
+  
+  res.send(addAgeColumn(patient));
 });
 
 router.put("/:id", async (req, res) => {
   const { error } = validate(req.body);
+
   if (error) return res.status(400).send(error.details[0].message);
+
+  req.body.dateOfYear = calculateDateOfYear(req.body.age);
 
   const { body } = req;
   const patient = await Patient.findByIdAndUpdate(
@@ -37,19 +48,18 @@ router.put("/:id", async (req, res) => {
       dateOfYear: body.dateOfYear,
       address: body.address,
       mobileNo: body.mobileNo,
-      date: body.date,
     },
     { new: true }
   );
   if (!patient)
     return res.status(404).send("The patient with the given ID not found");
-  res.send(patient);
+  res.send(addAgeColumn(patient));
 });
 
 router.delete("/:id", async (req, res) => {
   const patient = await Patient.findByIdAndRemove(req.params.id);
   if (!patient)
-    return res.status(404).send("The patient with the given ID not found");    
+    return res.status(404).send("The patient with the given ID not found");
   res.send(patient);
 });
 
@@ -62,10 +72,10 @@ router.get("/:id", async (req, res) => {
   res.send(patient);
 });
 
-
-addAgeColumn = (patient) => {    
+addAgeColumn = (patient) => {
   patient._doc.age = calculateAge(patient._doc.dateOfYear);
   return patient;
-}
+};
+
 
 module.exports = router;

@@ -9,15 +9,14 @@ const Patient = mongoose.model("Patient", new mongoose.Schema({
   date: { type: Date, required: true, default: Date.now },
 }));
 
-validate = (customer) => {
+validate = (patient) => {
   const schema = {
     name: Joi.string().min(3).max(50).required(),
-    dateOfYear: Joi.number().required(),
+    age: Joi.number().required(),
     address: Joi.string(),
-    mobileNo: Joi.string(),
-    date: Joi.date(),
+    mobileNo: Joi.string()
   };
-  return Joi.validate(customer, schema);
+  return Joi.validate(patient, schema);
 };
 
 exports.Patient = Patient;
