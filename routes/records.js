@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
   res.send(records);
 });
 
-router.get("/patientId/:id", async (req, res) => {
+router.get("/findByPatientId/:id", async (req, res) => {
     let records = await Record.find({ patient: req.params.id })
       .populate("patient", "name address mobileNo")
       // .select("date fee description medicine nextAppointmentDate patient")

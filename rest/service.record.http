@@ -15,8 +15,8 @@ Content-Type: application/json
 
 
 ### ------------------------------------------------------------------------------------
-### get by patientId // return array for all records by patientId //
-GET {{DataEndPoint}}/patientId/5ed5f3a02a2f2046b0ed3a3a
+### find by by patientId // return array for all records by patientId //
+GET {{DataEndPoint}}/findByPatientId/5edb4474fbc65c33f0a4f041
 Content-Type: application/json
 
 
