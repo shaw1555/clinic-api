@@ -8,8 +8,10 @@ const express = require('express');
 const app = express();
 
 
+const connectionString = "mongodb+srv://dbUserClinic:shaw2115@cluster0-4xssw.azure.mongodb.net/test";
+
 mongoose
-  .connect("mongodb://localhost:27017/clinic", {
+  .connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false 
