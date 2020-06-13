@@ -6,12 +6,14 @@ const records = require('./routes/records');
 var cors = require('cors')
 const express = require('express');
 const app = express();
+const config = require('config');
 
 
-const connectionString = "mongodb+srv://dbUserClinic:shaw2115@cluster0-4xssw.azure.mongodb.net/test";
+//const db = "mongodb+srv://dbUserClinic:shaw2115@cluster0-4xssw.azure.mongodb.net/test";
 
+const db = config.get('db');
 mongoose
-  .connect(connectionString, {
+  .connect(db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false 
@@ -27,5 +29,5 @@ app.use('/api/records', records);
 
 
 
-const port = process.env.port || 3099 ;
+const port = process.env.PORT || 3099 ;
 app.listen(port, ()=> console.log(`Listening on port ${port}...`));
