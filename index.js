@@ -3,6 +3,7 @@ Joi.objectId = require('joi-objectid')(Joi);
 const mongoose = require("mongoose");
 const patients = require('./routes/patients');
 const records = require('./routes/records');
+const home = require('./routes/home');
 var cors = require('cors')
 const express = require('express');
 const app = express();
@@ -26,8 +27,7 @@ app.use(express.json());
 app.use(cors());
 app.use('/api/patients', patients);
 app.use('/api/records', records);
-
-
+app.use('/', home);
 
 const port = process.env.PORT || 3099 ;
 app.listen(port, ()=> console.log(`Listening on port ${port}...`));
