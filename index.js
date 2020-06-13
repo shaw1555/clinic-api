@@ -13,7 +13,6 @@ const config = require('config');
 //const db = "mongodb+srv://dbUserClinic:shaw2115@cluster0-4xssw.azure.mongodb.net/test";
 
 const db = config.get('db');
-console.log('db >> ', db);
 mongoose
   .connect(db, {
     useNewUrlParser: true,
