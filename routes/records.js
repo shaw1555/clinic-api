@@ -9,16 +9,18 @@ router.get("/", async (req, res) => {
     .populate("patient", "name address mobileNo")
     // .select("date fee description medicine nextAppointmentDate patient")
     .sort("-date");
+
+  records = records.filter(x => x.patient != null);
   res.send(records);
 });
 
 router.get("/findByPatientId/:id", async (req, res) => {
-    let records = await Record.find({ patient: req.params.id })
-      .populate("patient", "name address mobileNo")
-      // .select("date fee description medicine nextAppointmentDate patient")
-      .sort("-date");
-    res.send(records);
-  });
+  let records = await Record.find({ patient: req.params.id })
+    .populate("patient", "name address mobileNo")
+    // .select("date fee description medicine nextAppointmentDate patient")
+    .sort("-date");
+  res.send(records);
+});
 
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
@@ -87,9 +89,11 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  let record = await Record.findById(req.params.id)
-    .populate("patient", "name address mobileNo")
-    // .select("date fee description medicine nextAppointmentDate patient");
+  let record = await Record.findById(req.params.id).populate(
+    "patient",
+    "name address mobileNo"
+  );
+  // .select("date fee description medicine nextAppointmentDate patient");
   if (!record)
     return res.status(404).send("The record with the given ID not found");
   res.send(record);

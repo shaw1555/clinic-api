@@ -52,7 +52,7 @@ Content-Type: application/json
 
 ### ------------------------------------------------------------------------------------
 ### delete
-DELETE  {{DataEndPoint}}/5edb495f675c310e0c056ebc
+DELETE  {{DataEndPoint}}/5edb4472fbc65c33f0a4f040
 Content-Type: application/json
 
 

@@ -10,6 +10,9 @@ const app = express();
 const config = require('config');
 
 
+//heroku config:set clinic_db=mongodb+srv://dbUserClinic:shaw2115@cluster0-4xssw.azure.mongodb.net/test
+// set heroku environment variables for connection string // 
+
 //const db = "mongodb+srv://dbUserClinic:shaw2115@cluster0-4xssw.azure.mongodb.net/test";
 //const db = "mongodb://localhost/clinic"; 
 
