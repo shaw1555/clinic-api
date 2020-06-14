@@ -11,15 +11,18 @@ const config = require('config');
 
 
 //const db = "mongodb+srv://dbUserClinic:shaw2115@cluster0-4xssw.azure.mongodb.net/test";
+//const db = "mongodb://localhost/clinic"; 
 
 const db = config.get('db');
+const dbStringInfo = db.length > 20 ? db.substring(0,20) : "check db connection";
+
 mongoose
   .connect(db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false 
   })
-  .then(() => console.log("Connected to MongoDB..."))
+  .then(() => console.log("Connected to MongoDB...", dbStringInfo))
   .catch((err) => console.error("Could not connect to MongoDB...", err));
   
 

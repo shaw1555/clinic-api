@@ -1,4 +1,4 @@
 {
-    "db": "mongodb+srv://dbUserClinic:shaw2115@cluster0-4xssw.azure.mongodb.net/test"
+    "db": "mongodb://localhost/clinic"
 
 }
