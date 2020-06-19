@@ -32,15 +32,14 @@ Content-Type: application/json
 
 ### ------------------------------------------------------------------------------------
 ### update
-PUT {{DataEndPoint}}/5ed71b8daaf3723bfc4b231a
+PUT {{DataEndPoint}}/5eec354149312e1288ee3edf
 Content-Type: application/json
 
 {
-    "name": "U Ba Phyu 2",
-    "dateOfYear": "1966",
+    "name": "U Ba Phyu 3332",
     "address": "325,kyar pwint, Pazundaung",
     "mobileNo": "09 3456789",
-    "date": "2020/05/29"
+    "age": 23
   }
 
 ### ------------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+const _ = require("lodash");
 const express = require("express");
 const router = express.Router();
 const { Patient, validate } = require("../models/patient");
@@ -10,24 +11,13 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { error } = validate({
-    name: req.body.name,
-    age: req.body.age,
-    address: req.body.address,
-    mobileNo: req.body.mobileNo,
-  });
+  
+  const { error } = validate(_.pick(req.body,['name', 'age', 'address', 'mobileNo']));
   if (error) return res.status(400).send(error.details[0].message);
 
   req.body.dateOfYear = calculateDateOfYear(req.body.age);
 
-  const { body } = req;
-  const patient = new Patient({
-    name: body.name,
-    dateOfYear: body.dateOfYear,
-    address: body.address,
-    mobileNo: body.mobileNo,
-    date: body.date,
-  });
+  const patient = new Patient(_.pick(req.body,['name', 'dateOfYear', 'address', 'mobileNo', 'date']));
   await patient.save();
   
   res.send(addAgeColumn(patient));
@@ -40,15 +30,9 @@ router.put("/:id", async (req, res) => {
 
   req.body.dateOfYear = calculateDateOfYear(req.body.age);
 
-  const { body } = req;
   const patient = await Patient.findByIdAndUpdate(
     req.params.id,
-    {
-      name: body.name,
-      dateOfYear: body.dateOfYear,
-      address: body.address,
-      mobileNo: body.mobileNo,
-    },
+    _.pick(req.body,['name', 'dateOfYear', 'address', 'mobileNo']),
     { new: true }
   );
   if (!patient)
