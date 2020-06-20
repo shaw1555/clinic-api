@@ -50,4 +50,4 @@ app.use('/', home);
 app.use(error);
 
 const port = process.env.PORT || 3099 ;
-app.listen(port, ()=> console.log(`Listening on port ${port}...`));
+app.listen(port, ()=> winston.info(`Listening on port ${port}...`));

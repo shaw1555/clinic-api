@@ -1,3 +1,4 @@
+const _ = require("lodash");
 const express = require("express");
 const router = express.Router();
 const { Record, validate } = require("../models/record");
@@ -23,25 +24,26 @@ router.get("/findByPatientId/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { error } = validate(req.body);
+  const { error } = validate(_.pick(req.body,['patientId', 'fee', 'description', 'medicine']));
   if (error) return res.status(400).send(error.details[0].message);
 
   const {
     patientId,
-    date,
+    // date,
     fee,
     description,
     medicine,
-    nextAppointmentDate,
+    // nextAppointmentDate,
   } = req.body;
   const age = await getAge(patientId);
+  const date = new Date();
 
   const record = new Record({
     date,
     fee,
     description,
     medicine,
-    nextAppointmentDate,
+    date,
     age,
     patient: patientId,
   });
@@ -55,22 +57,22 @@ router.put("/:id", async (req, res) => {
 
   const {
     patientId,
-    date,
+    // date,
     fee,
     description,
     medicine,
-    nextAppointmentDate,
+    // nextAppointmentDate,
   } = req.body;
   const age = await getAge(patientId);
 
   const record = await Record.findByIdAndUpdate(
     req.params.id,
     {
-      date,
+      // date,
       fee,
       description,
       medicine,
-      nextAppointmentDate,
+      // nextAppointmentDate,
       age,
       patient: patientId,
     },

@@ -31,8 +31,8 @@ const Record = mongoose.model(
 validate = (record) => {
   const schema = {
     patientId: Joi.objectId().required(),
-    date: Joi.date(),
-    nextAppointmentDate: Joi.date().allow(null),
+    // date: Joi.date(),
+    // nextAppointmentDate: Joi.date().allow(null),
     fee: Joi.number().required(),
     description: Joi.string().max(500),
     medicine: Joi.string().max(500),
