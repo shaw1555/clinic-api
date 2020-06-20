@@ -1,3 +1,5 @@
+require('express-async-errors');// it use for get exception , not to down service when exception // 
+const error = require('./middleware/error');
 const Joi = require("joi");
 Joi.objectId = require('joi-objectid')(Joi);
 const mongoose = require("mongoose");
@@ -34,6 +36,7 @@ app.use(cors());
 app.use('/api/patients', patients);
 app.use('/api/records', records);
 app.use('/', home);
+app.use(error);
 
 const port = process.env.PORT || 3099 ;
 app.listen(port, ()=> console.log(`Listening on port ${port}...`));
