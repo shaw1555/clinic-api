@@ -22,24 +22,28 @@ POST {{DataEndPoint}}
 Content-Type: application/json
 
 {
-    "name": "Ma Mya",
+    "name": "Phyu Phyu",
     "dateOfYear": "1997",
     "age": 23,
     "address": "115, xx Pazundaung Pazundaung Pazundaung",
     "mobileNo": "09 3456789",
-    "date": "2020/06/02"
+    "date": "2020/06/02",
+    "dateOfBirth": "2019/04/21"
   }
 
 ### ------------------------------------------------------------------------------------
 ### update
-PUT {{DataEndPoint}}/5eec354149312e1288ee3edf
+PUT {{DataEndPoint}}/5ef0dac07d691e07a87c1bca
 Content-Type: application/json
 
 {
-    "name": "U Ba Phyu 3332",
-    "address": "325,kyar pwint, Pazundaung",
+    "name": "Phyu Phyu",
+    "dateOfYear": "1997",
+    "age": 23,
+    "address": "115, xx Pazundaung Pazundaung Pazundaung",
     "mobileNo": "09 3456789",
-    "age": 23
+    "date": "2020/06/02",
+    "dateOfBirth": "2020/04/21"
   }
 
 ### ------------------------------------------------------------------------------------

@@ -103,7 +103,7 @@ router.get("/:id", async (req, res) => {
 
 getAge = async (patientId) => {
   const patient = await Patient.findById(patientId);
-  return calculateAge(patient._doc.dateOfYear);
+  return calculateAge(patient._doc.dateOfBirth);
 };
 
 module.exports = router;

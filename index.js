@@ -47,7 +47,7 @@ app.use(cors());
 app.use('/api/patients', patients);
 app.use('/api/records', records);
 app.use('/', home);
-app.use(error);
+// app.use(error);
 
 const port = process.env.PORT || 3099 ;
 app.listen(port, ()=> winston.info(`Listening on port ${port}...`));
