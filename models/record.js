@@ -16,11 +16,11 @@ const Record = mongoose.model(
     },
     description: String,
     medicine: String,
-    nextAppointmentDate: {type: Date},
-    age: {
-      type: Number,
-      required: true,
-    },
+    // nextAppointmentDate: {type: Date},
+    // age: {
+    //   type: String,
+    //   required: true,
+    // },
     patient: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Patient',

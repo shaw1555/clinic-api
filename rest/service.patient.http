@@ -24,7 +24,7 @@ Content-Type: application/json
 {
     "name": "Thaw Dar",
     "dateOfYear": "1997",
-    "age": 23,
+    "age": "3 Y 3 M",
     "address": "115, xx Pazundaung Pazundaung Pazundaung",
     "mobileNo": "09 3456789",
     "date": "2020/06/02",
