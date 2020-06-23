@@ -22,7 +22,7 @@ POST {{DataEndPoint}}
 Content-Type: application/json
 
 {
-    "name": "Phyu Phyu",
+    "name": "Thaw Dar",
     "dateOfYear": "1997",
     "age": 23,
     "address": "115, xx Pazundaung Pazundaung Pazundaung",
@@ -33,17 +33,17 @@ Content-Type: application/json
 
 ### ------------------------------------------------------------------------------------
 ### update
-PUT {{DataEndPoint}}/5ef0dac07d691e07a87c1bca
+PUT {{DataEndPoint}}/5ef17cb6d87803364880ef07
 Content-Type: application/json
 
 {
-    "name": "Phyu Phyu",
+    "name": "Thaw Dar",
     "dateOfYear": "1997",
     "age": 23,
     "address": "115, xx Pazundaung Pazundaung Pazundaung",
     "mobileNo": "09 3456789",
     "date": "2020/06/02",
-    "dateOfBirth": "2020/04/21"
+     "dateOfBirth": "2019/05/27"
   }
 
 ### ------------------------------------------------------------------------------------
